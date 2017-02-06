@@ -14,10 +14,11 @@
   max-width: 1440px;
   margin-top: 16px;
   margin-bottom: 16px;
+  padding: 0 16px;
   display: -ms-flexbox;
   display: flex;
-  -ms-flex-pack: distribute;
-      justify-content: space-around;
+  -ms-flex-pack: justify;
+      justify-content: space-between;
   width: 100%;
   -ms-flex-item-align: center;
       align-self: center;
@@ -504,6 +505,7 @@ template {
   height: 64px;
   display: -ms-flexbox;
   display: flex;
+  padding: 16px;
   -ms-flex-pack: justify;
       justify-content: space-between;
   -ms-flex-align: center;
@@ -521,4 +523,4 @@ template {
   background: #fff;
   box-shadow: 0 1px 3px 0 rgba(0,0,0,0.25);
 }
-/*# sourceMappingURL=app.d0fe66abc901e3a86db6ce382f9ac550.css.map*/
+/*# sourceMappingURL=app.1cf55157955f5ffcbd6028bbfd68fe3f.css.map*/

@@ -43,8 +43,9 @@ export default {
       max-width: 1440px
       margin-top: 16px
       margin-bottom: 16px
+      padding: 0 16px
       display: flex
-      justify-content: space-around
+      justify-content: space-between
       width: 100%
       align-self: center
 

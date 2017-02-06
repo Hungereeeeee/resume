@@ -22,6 +22,7 @@
       margin: 0 auto
       height: 64px
       display: flex
+      padding: 16px
       justify-content: space-between
       align-items: center
       .logo
