@@ -30,6 +30,13 @@
 #resumePreview {
   width: 61.666667%;
   background: #777;
+}
+svg.icon {
+  height: 1em;
+  width: 1em;
+  fill: currentColor;
+  vertical-align: -0.1em;
+  font-size: 16px;
 }/*! normalize.css v5.0.0 | MIT License | github.com/necolas/normalize.css */
 
 /**
@@ -494,33 +501,106 @@ template {
 *{margin: 0;padding: 0;box-sizing: border-box}
 *::after,*::before{box-sizing: border-box}
 
-#topbar {
+#topbar[data-v-38ce6198] {
   background: #fff;
   box-shadow: 0 1px 3px 0 rgba(0,0,0,0.25);
 }
-#topbar >.wrapper {
+#topbar >.wrapper[data-v-38ce6198] {
   min-width: 1024px;
   max-width: 1440px;
   margin: 0 auto;
   height: 64px;
+}
+#topbar >.wrapper[data-v-38ce6198] {
   display: -ms-flexbox;
   display: flex;
-  padding: 16px;
+  padding: 0 16px;
   -ms-flex-pack: justify;
       justify-content: space-between;
   -ms-flex-align: center;
       align-items: center;
 }
-#topbar >.wrapper .logo {
+#topbar >.wrapper .logo[data-v-38ce6198] {
   font-size: 24px;
   color: #000;
 }
-#resumeEditor {
+#topbar >.wrapper button[data-v-38ce6198] {
+  width: 72px;
+  height: 32px;
+  border: none;
+  cursor: pointer;
+  font-size: 18px;
+  background: #ddd;
+  color: #222;
+}
+#topbar >.wrapper button[data-v-38ce6198]:hover {
+  box-shadow: 1px 1px 1px rgba(0,0,0,0.5);
+}
+#topbar >.wrapper button.primary[data-v-38ce6198] {
+  background: #02af5f;
+  color: #fff;
+}
+#resumeEditor[data-v-1f6f7918] {
   background: #fff;
   box-shadow: 0 1px 3px 0 rgba(0,0,0,0.25);
+  display: -ms-flexbox;
+  display: flex;
+  -ms-flex-direction: row;
+      flex-direction: row;
+  overflow: auto;
+}
+#resumeEditor >nav[data-v-1f6f7918] {
+  width: 80px;
+  background: #000;
+  color: #fff;
+}
+#resumeEditor >nav >ol >li[data-v-1f6f7918] {
+  height: 48px;
+  display: -ms-flexbox;
+  display: flex;
+  -ms-flex-pack: center;
+      justify-content: center;
+  -ms-flex-align: center;
+      align-items: center;
+  margin-top: 16px;
+  margin-bottom: 16px;
+}
+#resumeEditor >nav >ol >li.active[data-v-1f6f7918] {
+  background: #fff;
+  color: #000;
+}
+#resumeEditor >nav >ol >li svg.icon[data-v-1f6f7918] {
+  width: 24px;
+  height: 24px;
+}
+#resumeEditor >.panels[data-v-1f6f7918] {
+  -ms-flex-positive: 1;
+      flex-grow: 1;
+}
+#resumeEditor >.panels >li[data-v-1f6f7918] {
+  padding: 24px;
+}
+#resumeEditor ol[data-v-1f6f7918] {
+  list-style: none;
+}
+#resumeEditor .resumeField >label[data-v-1f6f7918] {
+  display: block;
+}
+#resumeEditor .resumeField input[type=text][data-v-1f6f7918] {
+  margin: 16px 0;
+  border: 1px solid #ddd;
+  box-shadow: inset 0 1px 3px 0 rgba(0,0,0,0.25);
+  width: 100%;
+  height: 40px;
+  padding: 0 8px;
+}
+hr[data-v-1f6f7918] {
+  border: none;
+  border-top: 1px solid #ddd;
+  margin: 24px 0;
 }
 #resumePreview {
   background: #fff;
   box-shadow: 0 1px 3px 0 rgba(0,0,0,0.25);
 }
-/*# sourceMappingURL=app.1cf55157955f5ffcbd6028bbfd68fe3f.css.map*/
+/*# sourceMappingURL=app.2e03ef4d9664e89b3d9c512a88f3a511.css.map*/

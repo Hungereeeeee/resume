@@ -2,6 +2,11 @@
   <div id="topbar">
     <div class="wrapper">
       <span class="logo">Resumer</span>
+
+      <div class="actions">
+        <button class="primary">保存</button>
+        <button>预览</button>
+      </div>
     </div>
   </div>
 </template>
@@ -12,7 +17,7 @@
   }
 </script>
 
-<style lang='stylus' rel='stylesheet/stylus'>
+<style scoped lang='stylus' rel='stylesheet/stylus'>
   #topbar
     background: #ffffff
     box-shadow: 0 1px 3px 0 rgba(0,0,0,0.25)
@@ -21,12 +26,27 @@
       max-width: 1440px
       margin: 0 auto
       height: 64px
+
+    >.wrapper
       display: flex
-      padding: 16px
+      padding: 0 16px
       justify-content: space-between
       align-items: center
       .logo
         font-size: 24px
         color: #000
+      button
+        width:72px
+        height: 32px
+        border: none
+        cursor: pointer
+        font-size: 18px
+        background: #ddd
+        color: #222
+        &:hover
+          box-shadow: 1px 1px 1px hsla(0,0,0,0.50)
+        &.primary
+          background: #02af5f
+          color: #fff
 </style>
 
