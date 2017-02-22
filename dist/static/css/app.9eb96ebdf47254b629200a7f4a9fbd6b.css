@@ -621,7 +621,7 @@ hr[data-v-1f6f7918] {
 #resumePreview p {
   white-space: pre-line;
 }
-#resumePreview section >h2:firstchild {
+#resumePreview section >h2:first-child {
   background: #ddd;
   display: inline-block;
   padding: 0.2em;
@@ -632,11 +632,13 @@ hr[data-v-1f6f7918] {
   font-size: 4em;
 }
 #resumePreview section[data-name="workHistory"] li+li,
-#resumePreview section[data-name="projects"] li+li {
+#resumePreview section[data-name="projects"] li+li,
+#resumePreview section[data-name="awards"] li+li {
   margin-top: 1em;
 }
 #resumePreview section[data-name="workHistory"] li h3,
-#resumePreview section[data-name="projects"] li h3 {
+#resumePreview section[data-name="projects"] li h3,
+#resumePreview section[data-name="awards"] li h3 {
   border-bottom: 1px solid #999;
   padding-bottom: 0.3em;
   margin-bottom: 0.3em;
@@ -647,4 +649,4 @@ hr[data-v-1f6f7918] {
 #resumePreview section[data-name="contacts"] td:first-child {
   padding-right: 1em;
 }
-/*# sourceMappingURL=app.19cd309592e88eaa21cfdbc3744c337f.css.map*/
+/*# sourceMappingURL=app.9eb96ebdf47254b629200a7f4a9fbd6b.css.map*/

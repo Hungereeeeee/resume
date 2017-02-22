@@ -35,8 +35,17 @@
       <h2>毕业院校</h2>
       <ol>
         <li v-for="item in resume.education">
-          <h3>{{item.school}}</h3>
-          <span v-show="item.content"> - {{item.content}}</span>
+          <h3>{{item.school}} <span v-show="item.content">-{{item.content}}</span></h3>
+        </li>
+      </ol>
+    </section>
+
+    <section data-name="awards" v-show="resume.awards">
+      <h2>获奖情况</h2>
+      <ol>
+        <li v-for="item in resume.awards">
+          <h3>{{item.name}}</h3>
+          <p v-show="item.content">{{item.content}} </p>
         </li>
       </ol>
     </section>
@@ -50,17 +59,6 @@
         </tr>
       </table>
     </section>
-
-    <section data-name="awards" v-show="resume.awards">
-      <h2>获奖情况</h2>
-      <ol>
-        <li v-for="item in resume.awards">
-          <h3>{{item.name}}</h3>
-          <p v-show="item.content"> - {{item.content}} </p>
-        </li>
-      </ol>
-    </section>
-
 
   </div>
 </template>
@@ -96,15 +94,18 @@
     p
       white-space:pre-line
     section
-      >h2:firstchild
-        background: #ddd; display: inline-block; padding: .2em;margin-bottom: .5em;
+      >h2:first-child
+          background: #ddd
+          display: inline-block
+          padding: .2em
+          margin-bottom: .5em
     section[data-name="profile"]
       >h1
         margin:.1em 0
         font-size: 4em
     section[data-name="workHistory"],
     section[data-name="projects"],
-    section[data-name="workHistory"]
+    section[data-name="awards"]
       li+li
         margin-top : 1em
       li
