@@ -21,7 +21,8 @@
             </div>
             <div v-else class="resumeField" v-for="(value,key) in resume[item.field]">
               <label>{{key}}</label>
-              <input type="text" :value="value" @input="resume[item.field][key] = $event.target.value">
+              <!--<input type="text" :value="value" @input="resume[item.field][key] = $event.target.value">-->
+              <input type="text" v-model="resume[item.field][key]">
             </div>
         </li>
       </ol>
