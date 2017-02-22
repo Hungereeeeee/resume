@@ -7,33 +7,22 @@
             <use :xlink:href="`#icon-${item.icon}`"></use>
           </svg>
         </li>
-        <!--<li v-for="(item,index) in resume" :class = "{active: item === selected}" @click = "selected = item">-->
-          <!--&lt;!&ndash;{{index}}&ndash;&gt;-->
-          <!--<svg class="icon">-->
-            <!--<use :xlink:href="`#icon-${item.icon}`"></use>-->
-          <!--</svg>-->
-        <!--</li>-->
       </ol>
     </nav>
       <ol class="panels">
-        <!--<li v-for="item in resume" v-show="item === selected">-->
         <li v-for="item in resume.config" v-show="item.field === selected">
             <div v-if="resume[item.field] instanceof Array">
               <div class="subitem" v-for="subitem in resume[item.field]">
                 <div class="resumeField" v-for="(value,key) in subitem">
                   <label>{{key}}</label>
-                  <input type="text" :value="value">
+                  <input type="text" :value="value" @input="subitem[key] = $event.target.value">
                 </div>
               </div>
             </div>
             <div v-else class="resumeField" v-for="(value,key) in resume[item.field]">
               <label>{{key}}</label>
-              <input type="text" v-model="resume[item.field][key]">
+              <input type="text" :value="value" @input="resume[item.field][key] = $event.target.value">
             </div>
-          <!--<div v-for="(value,key) in item">-->
-            <!--<label>{{key}}</label>-->
-            <!--<input type="text" :value="value">-->
-          <!--</div>-->
         </li>
       </ol>
 
@@ -43,61 +32,20 @@
 <script type="text/ecmascript-6">
   export default {
     name: 'ResumeEditor',
-    data(){
-      return {
-        selected: 'profile',
-        resume: {
-          config: [
-            { field: 'profile',icon: 'id' },
-            { field: 'work history', icon: 'work'},
-            { field: 'education',icon: 'book'},
-            { field: 'projects',icon: 'heart'},
-            { field: 'awards',icon: 'cup'},
-            { field: 'contacts',icon: 'phone'},
-          ],
-          profile:{
-            name:'',
-            city:'',
-            title:''
-          },
-          'work history': [
-            {company: 'AL', content: '我的第二份工作是'},
-            {company: 'TX', content: '我的第一份工作是'},
-          ],
-          education: [
-            { school: 'AL', content: '文字' },
-            { school: 'TX', content: '文字' },
-          ],
-          projects: [
-            { name: 'project a', content: '文字' },
-            { name: 'project b', content: '文字' },
-          ],
-          awards: [
-            { name: 'awards a', content: '文字' },
-            { name: 'awards a', content: '文字' },
-          ],
-          contacts: [
-            { contact: 'phone', content: '12345678910' },
-            { school: 'phone', content: '12345678' },
-          ],
-
+    computed:{
+      selected:{
+        get(){
+          return this.$store.state.selected
+        },
+        set(value){
+          return this.$store.commit('switchTab',value)
         }
-        // resume: {
-        //   profile: {
-        //     icon: 'id',
-        //     name: '',
-        //     city: '',
-        //     title: ''
-        //   },
-        //   'work history': { icon: 'work',  items: [ {company: 'AL', content: '我的第二份工作是'},
-        //          {company: 'TX', content: '我的第一份工作是'},] },
-        //   education: { icon: 'book',  items: [] },
-        //   projects: { icon: 'heart',  items: [] },
-        //   awards: { icon: 'cup',  items: [] },
-        //   contacts: { icon: 'phone',  items: [] },
-        // }
-
+      },
+      resume(){
+          return this.$store.state.resume
       }
+    },
+    methods:{
     }
   }
 </script>
