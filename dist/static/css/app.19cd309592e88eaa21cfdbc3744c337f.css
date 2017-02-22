@@ -1,6 +1,6 @@
 
 .page {
-/*height: 100vh*/
+  height: 100vh;
   display: -ms-flexbox;
   display: flex;
   -ms-flex-direction: column;
@@ -605,6 +605,7 @@ hr[data-v-1f6f7918] {
   padding: 2em;
   color: #333;
   line-height: 1.2;
+  overflow: scroll;
 }
 #resumePreview * {
   box-sizing: border-box;
@@ -646,4 +647,4 @@ hr[data-v-1f6f7918] {
 #resumePreview section[data-name="contacts"] td:first-child {
   padding-right: 1em;
 }
-/*# sourceMappingURL=app.d746c7659babafa029e292dec530d798.css.map*/
+/*# sourceMappingURL=app.19cd309592e88eaa21cfdbc3744c337f.css.map*/

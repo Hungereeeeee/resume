@@ -86,6 +86,7 @@
     padding: 2em
     color: #333
     line-height : 1.2
+    overflow scroll
     *
       box-sizing: border-box; font-variant: normal; font-weight: normal;
     ol

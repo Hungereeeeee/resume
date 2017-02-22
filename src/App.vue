@@ -35,7 +35,7 @@ export default {
 
 <style lang="stylus" rel="stylesheet/stylus">
   .page
-    /*height: 100vh*/
+    height: 100vh
     display: flex
     flex-direction: column
     background: #EAEBEC
