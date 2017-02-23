@@ -547,7 +547,6 @@ template {
   display: flex;
   -ms-flex-direction: row;
       flex-direction: row;
-  overflow: auto;
 }
 #resumeEditor >nav[data-v-1f6f7918] {
   width: 80px;
@@ -576,9 +575,27 @@ template {
 #resumeEditor >.panels[data-v-1f6f7918] {
   -ms-flex-positive: 1;
       flex-grow: 1;
+  overflow: scroll;
 }
 #resumeEditor >.panels >li[data-v-1f6f7918] {
   padding: 24px;
+}
+#resumeEditor >.panels .btn[data-v-1f6f7918] {
+  font-size: 20px;
+  text-align: center;
+  line-height: 32px;
+  width: 72px;
+  height: 32px;
+  margin: 0 auto;
+  border-radius: 5px;
+  cursor: pointer;
+  color: #fff;
+  background: #1f2126;
+}
+#resumeEditor >.panels .btn[data-v-1f6f7918]:hover {
+  color: #1f2126;
+  background: #fff;
+  border: 2px solid #1f2126;
 }
 #resumeEditor ol[data-v-1f6f7918] {
   list-style: none;
@@ -649,4 +666,4 @@ hr[data-v-1f6f7918] {
 #resumePreview section[data-name="contacts"] td:first-child {
   padding-right: 1em;
 }
-/*# sourceMappingURL=app.9eb96ebdf47254b629200a7f4a9fbd6b.css.map*/
+/*# sourceMappingURL=app.1dbd44f410f6a18f577531a654f7e68d.css.map*/
