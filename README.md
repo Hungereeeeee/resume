@@ -1,6 +1,6 @@
-# resume
-
-> A Vue.js project
+# resumer
+一个在线编辑简历的vue项目,持续施工中
+[预览地址](https://hungereeeeee.github.io/resume/dist/)
 
 ## Build Setup
 
