@@ -14,14 +14,17 @@
         <div v-if="resume[item.field] instanceof Array" :id="item.field">
           <div class="subitem" v-for="subitem in resume[item.field]">
             <div class="resumeField" v-for="(value,key) in subitem">
-              <label>{{key}}</label>
-              <input type="text" :value="value"  @input="subitem[key] = $event.target.value">
+              <label>{{key}} </label>
+
+              <input type="text" v-if="key != 'experience'"  :value="value" @input="subitem[key] = $event.target.value">
+              <textarea v-else :value="value" @input="subitem[key] = $event.target.value"></textarea>
             </div>
           </div>
           <div class="btn" @click="add($event)">添加</div>
         </div>
         <div v-else class="resumeField" v-for="(value,key) in resume[item.field]">
           <label>{{key}}</label>
+          <!--<textarea :value="value" @input="resume[item.field][key] = $event.target.value"></textarea>-->
           <input type="text" :value="value" @input="resume[item.field][key] = $event.target.value">
         </div>
       </li>
@@ -52,15 +55,19 @@
         var newObj ={};
         for(var key in obj){
           newObj[key] = obj[key];
+          console.log(key,obj[key])
         }
+        console.log(newObj)
         return newObj;
       },
       add:function(e){
         let ID = e.target.parentNode.id;
-        let o = this.$store.state.resume[ID][0];
-        let newObj = this.clone(o);
+        var  o = this.$store.state.resume[ID][0];
+
+        var newObj = this.clone(o);
+        // console.log('o',o)
+        console.log('newObj',Object.create(o))
         this.$store.state.resume[ID].push(newObj)
-        console.log(this.$store.state.resume[ID])
       }
     }
   }
@@ -116,13 +123,23 @@
     .resumeField
       >label
         display: block
-      input[type=text]
+      input[type = text]
         margin: 16px 0
         border: 1px solid #ddd
         box-shadow: inset 0 1px 3px 0 rgba(0,0,0,0.25)
         width: 100%
         height: 40px
         padding: 0 8px
+      textarea
+        margin: 16px 0
+        border: 1px solid #ddd
+        box-shadow: inset 0 1px 3px 0 rgba(0,0,0,0.25)
+        width: 100%
+        height: 40px
+        padding: 0 8px
+        transition: height 1s
+        &:focus
+          height : 200px;
   hr
     border: none
     border-top: 1px solid #ddd

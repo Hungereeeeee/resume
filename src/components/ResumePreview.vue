@@ -1,64 +1,77 @@
 <template>
   <div id="resumePreview">
-   <section data-name="profile" v-show="resume.profile">
-     <h1>
-       {{resume.profile.name}}
-     </h1>
-     <h2>{{resume.profile.title}}</h2>
-     <p>
-       <small>{{resume.profile.city}}</small>
-       <small>{{resume.profile.birthday}}</small>
-     </p>
-   </section>
+    <div id="information">
+      <section data-name="profile" v-show="resume.profile">
+        <table>
+          <tr>
+            <td>姓名</td>
+            <td> {{resume.profile.name}}</td>
+          </tr>
+          <tr>
+            <td>职位</td>
+            <td> {{resume.profile.city}}</td>
+          </tr>
+          <tr>
+            <td>出生日期</td>
+            <td> {{resume.profile.birthday}}</td>
+          </tr>
+          <tr>
+            <td>所在城市</td>
+            <td> {{resume.profile.city}}</td>
+          </tr>
+        </table>
+      </section>
+      <div>
+        <section data-name="contacts" v-show="resume.contacts">
+          <table>
+            <tr v-for="item in resume.contacts">
+              <td>{{item.contact}}</td>
+              <td v-show="item.content"> {{item.content}} </td>
+            </tr>
+          </table>
+        </section>
 
-    <section data-name="projects" v-show="resume.projects">
-      <h2>项目经历</h2>
-      <ol>
-        <li v-for="item in resume.projects">
-          <h3>{{item.name}}</h3>
-          <p v-show="item.content">{{item.content}}</p>
-        </li>
-      </ol>
-    </section>
+        <section data-name="education" v-show="resume.education">
+          <table>
+            <tr v-for="item in resume.education">
+              <td>{{item.school}}</td>
+              <td v-show="item.content"> {{item.content}} </td>
+            </tr>
+          </table>
+        </section>
+      </div>
+    </div>
+    <div id="experiences">
+      <section data-name="awards" v-show="resume.awards">
+        <h2>获奖情况</h2>
+        <ol>
+          <li v-for="item in resume.awards">
+            <h3>{{item.name}}  <p>{{item.time}}</p></h3>
+            <p v-show="item.experience">{{item.experience}} </p>
+          </li>
+        </ol>
+      </section>
 
-    <section data-name="workHistory" v-show="resume.workHistory">
-      <h2>工作经历</h2>
-      <ol>
-        <li v-for="item in resume.workHistory">
-          <h3>{{item.company}}</h3>
-          <p v-show="item.content">{{item.content}}</p>
-        </li>
-      </ol>
-    </section>
+      <section data-name="workHistory" v-show="resume.workHistory">
+        <h2>工作经历</h2>
+        <ol>
+          <li v-for="item in resume.workHistory">
+            <h3>{{item.company}} <p>{{item.time}}</p></h3>
+            <p v-show="item.experience">{{item.experience}}</p>
+          </li>
+        </ol>
+      </section>
 
-    <section data-name="education" v-show="resume.education">
-      <h2>毕业院校</h2>
-      <ol>
-        <li v-for="item in resume.education">
-          <h3>{{item.school}} <span v-show="item.content">-{{item.content}}</span></h3>
-        </li>
-      </ol>
-    </section>
-
-    <section data-name="awards" v-show="resume.awards">
-      <h2>获奖情况</h2>
-      <ol>
-        <li v-for="item in resume.awards">
-          <h3>{{item.name}}</h3>
-          <p v-show="item.content">{{item.content}} </p>
-        </li>
-      </ol>
-    </section>
-
-    <section data-name="contacts" v-show="resume.contacts">
-      <h2>联系方式</h2>
-      <table>
-        <tr v-for="item in resume.contacts">
-          <td>{{item.contact}}</td>
-          <td v-show="item.content"> {{item.content}} </td>
-        </tr>
-      </table>
-    </section>
+      <section data-name="projects" v-show="resume.projects">
+        <h2>项目经历</h2>
+        <ol>
+          <li v-for="item in resume.projects">
+            <h3>{{item.name}}  <p>{{item.time}}</p></h3>
+            <p v-show="item.experience">{{item.experience}}</p>
+          </li>
+        </ol>
+      </section>
+    </div>
 
   </div>
 </template>
@@ -81,7 +94,6 @@
   #resumePreview
     background: #ffffff
     box-shadow: 0 1px 3px 0 rgba(0,0,0,0.25)
-    padding: 2em
     color: #333
     line-height : 1.2
     overflow scroll
@@ -89,33 +101,44 @@
       box-sizing: border-box; font-variant: normal; font-weight: normal;
     ol
       list-style none
-    section+section
-      margin-top: 2em
     p
       white-space:pre-line
-    section
-      >h2:first-child
-          background: #ddd
+    #information
+      padding: 2em
+      &:after
+        display : block
+        content :''
+        clear both
+      td
+        width : 5em
+        font-size 20px;
+        &:first-child
+          color: #a5adb0
+      section[data-name="profile"]
+        float left
+      div
+        float right
+    #experiences
+      padding: 2em
+      background-color : #3a3c40
+      section
+        margin-bottom:2em
+        >h2:first-child
           display: inline-block
-          padding: .2em
           margin-bottom: .5em
-    section[data-name="profile"]
-      >h1
-        margin:.1em 0
-        font-size: 4em
-    section[data-name="workHistory"],
-    section[data-name="projects"],
-    section[data-name="awards"]
-      li+li
-        margin-top : 1em
-      li
-        h3
-          border-bottom: 1px solid #999; padding-bottom: .3em; margin-bottom: .3em;
-    section[data-name="education"]
-      li
-        line-height 1.5
-    section[data-name="contacts"]
-      td:first-child
-        padding-right: 1em
+          color: #7adde4
+      section[data-name="workHistory"],
+      section[data-name="projects"],
+      section[data-name="awards"]
+        li+li
+          margin-top : 1em
+        li
+          color: #a5adb0
+          h3
+            border-bottom: 1px solid #999; padding-bottom: .3em; margin-bottom: .3em;color : white
+            p
+              font-size : 14px
+              color: gray
+              float right
 </style>
 
