@@ -1,5 +1,5 @@
 <template>
-  <div class="wrapper">
+  <div class="dialogWrapper">
     <div class="dialog">
       <header>{{title}}
           <span class="close" @click="close">X</span>
@@ -18,7 +18,6 @@
     props:['title','visible'],
     methods:{
       close(){
-        console.log(1)
         this.$emit('close')
       }
     }
@@ -26,7 +25,7 @@
 </script>
 
 <style lang='stylus' rel='stylesheet/stylus' scoped>
-  .wrapper
+  .dialogWrapper
     background: hsla(0, 0%,0%,0.25)
     position fixed
     top 0

@@ -22,6 +22,8 @@ import ResumePreview from './components/ResumePreview'
 import icons from './assets/icons'
 
 import store from './store/index'
+import AV from './lib/leancloud'
+import getAVUser from './lib/getAVUser'
 
 export default {
   name: 'app',
@@ -30,7 +32,8 @@ export default {
   created(){
     document.body.insertAdjacentHTML('afterbegin',icons)
     let resumerData = JSON.parse(localStorage.getItem('resumer'));
-    Object.assign(this.$store.state,resumerData)
+    this.$store.commit('initState', resumerData)
+    this.$store.commit('setUser',getAVUser())
   }
 }
 </script>

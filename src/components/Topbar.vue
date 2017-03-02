@@ -1,30 +1,64 @@
 <template>
   <div id="topbar">
     <div class="wrapper">
-      <span class="logo">Resumer</span>
+      <span class="user">Resumer</span>
       <div class="actions">
-        <a class="button primary" href="#" @click.prevent="signUpDialogVisible = true">注册</a>
-        <MyDialog title="注册" :visible="signUpDialogVisible" v-show="signUpDialogVisible" @close="signUpDialogVisible = false">
-          我就是slot内容
-        </MyDialog>
+        <div v-if="logined" class="userActions" >
+          <span class="welcome">欢迎，{{user.username}}</span>
+          <a class="button" href="#" @click.prevent="signOut">登出</a>
+        </div>
+        <div v-else class="userActions">
+          <a class="button primary" href="#" @click.prevent="signUpDialogVisible = true">注册</a>
+          <a class="button" href="#" @click.prevent="signInDialogVisible = true">登入</a>
+        </div>
         <button class="button primary">保存</button>
         <button class="button">预览</button>
+        <MyDialog title="注册" :visible="signUpDialogVisible" v-show="signUpDialogVisible" @close="signUpDialogVisible = false">
+          <SignUpForm @success="signIn($event)"/>
+        </MyDialog>
+        <MyDialog title="登陆" :visible="signInDialogVisible" v-show="signInDialogVisible" @close="signInDialogVisible = false">
+          <SignInForm @success="signIn($event)"></SignInForm>
+        </MyDialog>
       </div>
     </div>
   </div>
 </template>
-
 <script type="text/ecmascript-6">
   import MyDialog from './MyDialog'
+  import SignUpForm from './SignUpForm'
+  import SignInForm from './SignInForm'
+
+  import AV from '../lib/leancloud'
 
   export default {
     name:'Topbar',
-    components:{MyDialog},
     data(){
       return{
-        signUpDialogVisible:false
+        signUpDialogVisible:false,
+        signInDialogVisible:false
       }
-    }
+    },
+    computed: {
+      user(){
+        return this.$store.state.user
+      },
+      logined(){
+        return this.user.id
+      }
+    },
+    methods:{
+      signIn(user){
+        this.signUpDialogVisible = false
+        this.signInDialogVisible = false
+        this.$store.commit('setUser',user)
+      },
+      signOut(){
+        console.log(1)
+        AV.User.logOut()
+        this.$store.commit('removeUser')
+      }
+    },
+    components:{MyDialog,SignUpForm,SignInForm},
   }
 </script>
 
@@ -64,5 +98,12 @@
         &.primary
           background: #02af5f
           color: #fff
+      .actions
+        display flex
+        .userActions
+          margin-right 5em
+          .welcome
+            margin-right .5em
+
 </style>
 
