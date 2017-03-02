@@ -540,6 +540,16 @@ template {
   background: #02af5f;
   color: #fff;
 }
+.wrapper[data-v-1ba1ad8e] {
+  background-color: #f00;
+  position: fixed;
+  top: 0;
+  bottom: 0;
+  left: 0;
+  right: 0;
+  width: 15em;
+  height: 10em;
+}
 #resumeEditor[data-v-1f6f7918] {
   background: #fff;
   box-shadow: 0 1px 3px 0 rgba(0,0,0,0.25);
@@ -579,6 +589,10 @@ template {
 }
 #resumeEditor >.panels >li[data-v-1f6f7918] {
   padding: 24px;
+}
+#resumeEditor >.panels .subitem[data-v-1f6f7918] {
+  border: 1px solid #000;
+  padding: 10px 5px;
 }
 #resumeEditor >.panels .btn[data-v-1f6f7918] {
   font-size: 20px;
@@ -633,7 +647,7 @@ hr[data-v-1f6f7918] {
   box-shadow: 0 1px 3px 0 rgba(0,0,0,0.25);
   color: #333;
   line-height: 1.2;
-  overflow: scroll;
+  overflow-y: scroll;
 }
 #resumePreview * {
   box-sizing: border-box;
@@ -704,4 +718,4 @@ hr[data-v-1f6f7918] {
   color: #808080;
   float: right;
 }
-/*# sourceMappingURL=app.118e5b3184d78dcda4e4f638a40ed6d7.css.map*/
+/*# sourceMappingURL=app.44fad95bba079a4dcc173ee1d71574c9.css.map*/

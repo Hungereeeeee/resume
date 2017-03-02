@@ -12,20 +12,19 @@
     <ol class="panels">
       <li v-for="item in resume.config" v-show="item.field === selected">
         <div v-if="resume[item.field] instanceof Array" :id="item.field">
-          <div class="subitem" v-for="subitem in resume[item.field]">
-            <div class="resumeField" v-for="(value,key) in subitem">
-              <label>{{key}} </label>
-
-              <input type="text" v-if="key != 'experience'"  :value="value" @input="subitem[key] = $event.target.value">
-              <textarea v-else :value="value" @input="subitem[key] = $event.target.value"></textarea>
-            </div>
+          <div class="subitem" v-for="(subitem,i) in resume[item.field]">
+              <div class="resumeField" v-for="(value,key) in subitem">
+                <label>{{key}} </label>
+                <input type="text" v-if="key != 'experience'"  :value="value" @input="changeResumeField(`${item.field}.${i}.${key}`,$event.target.value)">
+                <textarea v-else :value="value"  @input="changeResumeField(`${item.field}.${i}.${key}`,$event.target.value)"></textarea>
+              </div>
+              <div class="btn delete" @click="deleteitem(resume[item.field],i,`${item.field}`)">删除</div>
           </div>
           <div class="btn" @click="add($event)">添加</div>
         </div>
         <div v-else class="resumeField" v-for="(value,key) in resume[item.field]">
           <label>{{key}}</label>
-          <!--<textarea :value="value" @input="resume[item.field][key] = $event.target.value"></textarea>-->
-          <input type="text" :value="value" @input="resume[item.field][key] = $event.target.value">
+          <input type="text" :value="value" @input="changeResumeField(`${item.field}.${key}`,$event.target.value)">
         </div>
       </li>
     </ol>
@@ -55,9 +54,7 @@
         var newObj ={};
         for(var key in obj){
           newObj[key] = obj[key];
-          console.log(key,obj[key])
         }
-        console.log(newObj)
         return newObj;
       },
       add:function(e){
@@ -65,9 +62,23 @@
         var  o = this.$store.state.resume[ID][0];
 
         var newObj = this.clone(o);
-        // console.log('o',o)
         console.log('newObj',Object.create(o))
         this.$store.state.resume[ID].push(newObj)
+        this.$store.commit('keep')
+      },
+      changeResumeField(path,value){
+        this.$store.commit('updateResume',{
+          path,
+          value
+        })
+      },
+      deleteitem(item,i){
+        if(item.length>1){
+          this.$store.commit('deleteItem',{
+            item,
+            i
+          })
+        }
       }
     }
   }
@@ -102,6 +113,9 @@
       overflow : scroll
       >li
         padding:24px
+      .subitem
+        border : 1px solid black
+        padding :10px 5px
       .btn
         font-size:20px
         text-align:center

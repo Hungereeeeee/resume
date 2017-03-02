@@ -29,6 +29,8 @@ export default {
   components: {Topbar,ResumeEditor,ResumePreview},
   created(){
     document.body.insertAdjacentHTML('afterbegin',icons)
+    let resumerData = JSON.parse(localStorage.getItem('resumer'));
+    Object.assign(this.$store.state,resumerData)
   }
 }
 </script>

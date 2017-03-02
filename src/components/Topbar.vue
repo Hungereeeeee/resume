@@ -2,18 +2,21 @@
   <div id="topbar">
     <div class="wrapper">
       <span class="logo">Resumer</span>
-
       <div class="actions">
         <button class="primary">保存</button>
         <button>预览</button>
       </div>
+      <!--<MyDialog></MyDialog>-->
     </div>
   </div>
 </template>
 
 <script type="text/ecmascript-6">
+  import MyDialog from './MyDialog'
+
   export default {
-    name:'Topbar'
+    name:'Topbar',
+    components:{MyDialog},
   }
 </script>
 
