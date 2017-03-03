@@ -48,9 +48,6 @@ export default new Vuex.Store({
     }
   },
   mutations:{
-    initState(state,payload){
-      Object.assign(state,payload)
-    },
     switchTab(state,payload){
       state.selected = payload
       localStorage.setItem('resumer',JSON.stringify(state))
@@ -72,7 +69,10 @@ export default new Vuex.Store({
     },
     removeUser(state){
       state.user.id=null
-      console.log(state.user.id)
-    }
+      console.log(1)
+    },
+    initState(state,payload){
+      Object.assign(state,payload)
+    },
   }
 })

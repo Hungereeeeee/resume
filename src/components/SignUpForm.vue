@@ -52,6 +52,10 @@ export default {
 </script>
 
 <style lang='stylus' rel='stylesheet/stylus'>
-
+  .row
+    margin-bottom 5px
+    label
+      width 50px
+      display inline-block
 </style>
 

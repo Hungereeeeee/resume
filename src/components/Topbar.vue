@@ -44,7 +44,7 @@
       },
       logined(){
         return this.user.id
-      }
+      },
     },
     methods:{
       signIn(user){
@@ -53,9 +53,9 @@
         this.$store.commit('setUser',user)
       },
       signOut(){
-        console.log(1)
         AV.User.logOut()
         this.$store.commit('removeUser')
+
       }
     },
     components:{MyDialog,SignUpForm,SignInForm},

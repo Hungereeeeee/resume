@@ -524,7 +524,7 @@ template {
   font-size: 24px;
   color: #000;
 }
-#topbar >.wrapper button[data-v-38ce6198] {
+#topbar >.wrapper .button[data-v-38ce6198] {
   width: 72px;
   height: 32px;
   border: none;
@@ -532,23 +532,70 @@ template {
   font-size: 18px;
   background: #ddd;
   color: #222;
+  text-decoration: none;
+  display: -ms-inline-flexbox;
+  display: inline-flex;
+  -ms-flex-pack: center;
+      justify-content: center;
+  -ms-flex-align: center;
+      align-items: center;
+  vertical-align: center;
 }
-#topbar >.wrapper button[data-v-38ce6198]:hover {
+#topbar >.wrapper .button[data-v-38ce6198]:hover {
   box-shadow: 1px 1px 1px rgba(0,0,0,0.5);
 }
-#topbar >.wrapper button.primary[data-v-38ce6198] {
+#topbar >.wrapper .button.primary[data-v-38ce6198] {
   background: #02af5f;
   color: #fff;
 }
-.wrapper[data-v-1ba1ad8e] {
-  background-color: #f00;
+#topbar >.wrapper .actions[data-v-38ce6198] {
+  display: -ms-flexbox;
+  display: flex;
+}
+#topbar >.wrapper .actions .userActions[data-v-38ce6198] {
+  margin-right: 5em;
+}
+#topbar >.wrapper .actions .userActions .welcome[data-v-38ce6198] {
+  margin-right: 0.5em;
+}
+.dialogWrapper[data-v-1ba1ad8e] {
+  background: rgba(0,0,0,0.25);
   position: fixed;
   top: 0;
   bottom: 0;
   left: 0;
   right: 0;
-  width: 15em;
-  height: 10em;
+  display: -ms-flexbox;
+  display: flex;
+  -ms-flex-pack: center;
+      justify-content: center;
+  -ms-flex-align: center;
+      align-items: center;
+}
+.dialogWrapper .dialog[data-v-1ba1ad8e] {
+  background: #fff;
+  min-height: 4em;
+  min-width: 10em;
+}
+.dialogWrapper .dialog >header[data-v-1ba1ad8e] {
+  padding: 16px;
+  display: -ms-flexbox;
+  display: flex;
+  -ms-flex-pack: justify;
+      justify-content: space-between;
+}
+.dialogWrapper .dialog >main[data-v-1ba1ad8e] {
+  padding: 16px;
+}
+.dialogWrapper .dialog .close[data-v-1ba1ad8e] {
+  cursor: pointer;
+}
+.row {
+  margin-bottom: 5px;
+}
+.row label {
+  width: 50px;
+  display: inline-block;
 }
 #resumeEditor[data-v-1f6f7918] {
   background: #fff;
@@ -591,8 +638,12 @@ template {
   padding: 24px;
 }
 #resumeEditor >.panels .subitem[data-v-1f6f7918] {
-  border: 1px solid #000;
+  border-bottom: 2px solid #d3d3d3;
   padding: 10px 5px;
+  margin-bottom: 10px;
+}
+#resumeEditor >.panels .subitem .btn[data-v-1f6f7918] {
+  background-color: #d9534f;
 }
 #resumeEditor >.panels .btn[data-v-1f6f7918] {
   font-size: 20px;
@@ -718,4 +769,4 @@ hr[data-v-1f6f7918] {
   color: #808080;
   float: right;
 }
-/*# sourceMappingURL=app.44fad95bba079a4dcc173ee1d71574c9.css.map*/
+/*# sourceMappingURL=app.4d6f7d5c3f4abf8fedb62518915ddf70.css.map*/

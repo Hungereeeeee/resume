@@ -114,8 +114,11 @@
       >li
         padding:24px
       .subitem
-        border : 1px solid black
+        border-bottom : 2px solid lightgray
         padding :10px 5px
+        margin-bottom 10px
+        .btn
+          background-color rgb(217,83,79)
       .btn
         font-size:20px
         text-align:center
