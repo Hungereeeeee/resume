@@ -11,8 +11,6 @@
           <a class="button primary" href="#" @click.prevent="signUpDialogVisible = true">注册</a>
           <a class="button" href="#" @click.prevent="signInDialogVisible = true">登入</a>
         </div>
-        <button class="button primary">保存</button>
-        <button class="button">预览</button>
         <MyDialog title="注册" :visible="signUpDialogVisible" v-show="signUpDialogVisible" @close="signUpDialogVisible = false">
           <SignUpForm @success="signIn($event)"/>
         </MyDialog>
@@ -101,7 +99,6 @@
       .actions
         display flex
         .userActions
-          margin-right 5em
           .welcome
             margin-right .5em
 

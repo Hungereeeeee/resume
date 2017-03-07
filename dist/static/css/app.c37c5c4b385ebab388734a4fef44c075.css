@@ -552,9 +552,6 @@ template {
   display: -ms-flexbox;
   display: flex;
 }
-#topbar >.wrapper .actions .userActions[data-v-38ce6198] {
-  margin-right: 5em;
-}
 #topbar >.wrapper .actions .userActions .welcome[data-v-38ce6198] {
   margin-right: 0.5em;
 }
@@ -696,7 +693,6 @@ hr[data-v-1f6f7918] {
 #resumePreview {
   background: #fff;
   box-shadow: 0 1px 3px 0 rgba(0,0,0,0.25);
-  color: #333;
   line-height: 1.2;
   overflow-y: scroll;
 }
@@ -723,9 +719,6 @@ hr[data-v-1f6f7918] {
   width: 5em;
   font-size: 20px;
 }
-#resumePreview #information td:first-child {
-  color: #a5adb0;
-}
 #resumePreview #information section[data-name="profile"] {
   float: left;
 }
@@ -734,7 +727,6 @@ hr[data-v-1f6f7918] {
 }
 #resumePreview #experiences {
   padding: 2em;
-  background-color: #3a3c40;
 }
 #resumePreview #experiences section {
   margin-bottom: 2em;
@@ -742,17 +734,14 @@ hr[data-v-1f6f7918] {
 #resumePreview #experiences section >h2:first-child {
   display: inline-block;
   margin-bottom: 0.5em;
-  color: #7adde4;
+  color: #000;
+  background-color: #d3d3d3;
+  padding: 10px;
 }
 #resumePreview #experiences section[data-name="workHistory"] li+li,
 #resumePreview #experiences section[data-name="projects"] li+li,
 #resumePreview #experiences section[data-name="awards"] li+li {
   margin-top: 1em;
-}
-#resumePreview #experiences section[data-name="workHistory"] li,
-#resumePreview #experiences section[data-name="projects"] li,
-#resumePreview #experiences section[data-name="awards"] li {
-  color: #a5adb0;
 }
 #resumePreview #experiences section[data-name="workHistory"] li h3,
 #resumePreview #experiences section[data-name="projects"] li h3,
@@ -760,13 +749,12 @@ hr[data-v-1f6f7918] {
   border-bottom: 1px solid #999;
   padding-bottom: 0.3em;
   margin-bottom: 0.3em;
-  color: #fff;
 }
 #resumePreview #experiences section[data-name="workHistory"] li h3 p,
 #resumePreview #experiences section[data-name="projects"] li h3 p,
 #resumePreview #experiences section[data-name="awards"] li h3 p {
   font-size: 14px;
-  color: #808080;
+/*color: gray*/
   float: right;
 }
-/*# sourceMappingURL=app.4d6f7d5c3f4abf8fedb62518915ddf70.css.map*/
+/*# sourceMappingURL=app.c37c5c4b385ebab388734a4fef44c075.css.map*/

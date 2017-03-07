@@ -11,41 +11,15 @@ export default new Vuex.Store({
       id:'',
       username:''
     },
-    resume: {
-      config: [
-        { field: 'profile',icon: 'id' },
-        { field: 'contacts',icon: 'phone'},
-        { field: 'education',icon: 'book'},
-        { field: 'awards',icon: 'cup'},
-        { field: 'workHistory', icon: 'work'},
-        { field: 'projects',icon: 'heart'},
-      ],
-      profile:{
-        name:'那谁',
-        city:'那哪',
-        title:'那啥',
-        birthday:'1993-08-17'
-      },
-      contacts: [
-        { contact: 'phone', content: '12345678910' },
-      ],
-      'workHistory': [
-        {company: '狗急跳墙责任有限公司', time:'2020-13-32',experience:  `公司总部设在XXXX区，先后在北京、上海成立分公司。专注于移动XXX领域，主打产品XXXXX，它将资讯、报纸、杂志、图片、微信等众多内容，按照用户意愿聚合到一起，实现深度个性化 定制。
-我的主要工作如下:
-1. 完成既定产品需求。
-2. 修复 bug。`},
-      ],
-      education: [
-        { school: '大学', content: '本科' },
-      ],
-      projects: [
-        { name: 'project a',time:'2020-13-32',experience: '文字' },
-      ],
-      awards: [
-        { name: 'awards a', time:'2020-13-32',experience: '奖励' },
-      ],
-
-    }
+    resumeConfig: [
+      { field: 'profile', icon: 'id', keys: ['name','city', 'title', 'birthday']},
+      { field: 'contacts', icon: 'phone' ,type: 'array',  keys: ['contact', 'content'] },
+      { field: 'education', icon: 'book',type: 'array',  keys: ['school', 'details'] },
+      { field: 'awards', icon: 'cup' ,type: 'array',  keys: ['name', 'details'] },
+      { field: 'workHistory', icon: 'work', type: 'array', keys: ['company', 'details'] },
+      { field: 'projects', icon: 'heart',type: 'array',  keys: ['name', 'details']  },
+    ],
+    resume:{}
   },
   mutations:{
     switchTab(state,payload){
@@ -64,15 +38,31 @@ export default new Vuex.Store({
       localStorage.setItem('resumer',JSON.stringify(state))
     },
     setUser(state,payload){
-      console.log(payload)
       Object.assign(state.user,payload)
     },
     removeUser(state){
-      state.user.id=null
-      console.log(1)
+      state.user.id=''
     },
     initState(state,payload){
+      state.resumeConfig.map((item)=>{
+        if(item.type === 'array'){
+          //state.resume[item.field] = [] // 这样写 Vue 无法监听属性变化
+          Vue.set(state.resume,item.field,[])
+        }else{
+          Vue.set(state.resume,item.field,{})
+          item.keys.map((key)=>{
+            Vue.set(state.resume[item.field],key,'')
+          })
+        }
+      })
       Object.assign(state,payload)
     },
+    addResumeSubfield(state,{field}){
+      let empty={}
+      state.resume[field].push(empty)
+      state.resumeConfig.filter((i)=> i.field === field)[0].keys.map((key)=>{
+        Vue.set(empty,key,'')
+      })
+    }
   }
 })

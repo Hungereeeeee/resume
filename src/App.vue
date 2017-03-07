@@ -31,9 +31,12 @@ export default {
   components: {Topbar,ResumeEditor,ResumePreview},
   created(){
     document.body.insertAdjacentHTML('afterbegin',icons)
-    let resumerData = JSON.parse(localStorage.getItem('resumer'));
-    this.$store.commit('initState', resumerData)
-    this.$store.commit('setUser',getAVUser())
+   let state = localStorage.getItem('state')
+    if(state){
+      state = JSON.parse(state)
+    }
+    this.$store.commit('initState', state)
+    this.$store.commit('setUser', getAVUser())
   }
 }
 </script>

@@ -2,7 +2,7 @@
   <div id="resumeEditor">
     <nav>
       <ol>
-        <li v-for="(item,index) in resume.config" :class = "{active: item.field === selected}" @click = "selected = item.field">
+        <li v-for="(item,index) in resumeConfig" :class = "{active: item.field === selected}" @click = "selected = item.field">
           <svg class="icon">
             <use :xlink:href="`#icon-${item.icon}`"></use>
           </svg>
@@ -10,20 +10,21 @@
       </ol>
     </nav>
     <ol class="panels">
-      <li v-for="item in resume.config" v-show="item.field === selected">
-        <div v-if="resume[item.field] instanceof Array" :id="item.field">
+      <li v-for="item in resumeConfig" v-show="item.field === selected">
+        <div v-if="item.type === 'array'" :id="item.field">
+          <h2>{{$t(`resume.${item.field}._`)}}</h2>
           <div class="subitem" v-for="(subitem,i) in resume[item.field]">
               <div class="resumeField" v-for="(value,key) in subitem">
-                <label>{{key}} </label>
+                <label>{{$t(`resume.${item.field}.${key}`)}}</label>
                 <input type="text" v-if="key != 'experience'"  :value="value" @input="changeResumeField(`${item.field}.${i}.${key}`,$event.target.value)">
                 <textarea v-else :value="value"  @input="changeResumeField(`${item.field}.${i}.${key}`,$event.target.value)"></textarea>
               </div>
               <div class="btn delete" @click="deleteitem(resume[item.field],i,`${item.field}`)">删除</div>
           </div>
-          <div class="btn" @click="add($event)">添加</div>
+          <div class="btn" @click="addResumeSubfield(item.field)">添加</div>
         </div>
         <div v-else class="resumeField" v-for="(value,key) in resume[item.field]">
-          <label>{{key}}</label>
+          <label>{{$t(`resume.profile.${key}`)}}</label>
           <input type="text" :value="value" @input="changeResumeField(`${item.field}.${key}`,$event.target.value)">
         </div>
       </li>
@@ -46,25 +47,14 @@
       },
       resume(){
         return this.$store.state.resume
+      },
+      resumeConfig(){
+        return this.$store.state.resumeConfig
       }
     },
     methods:{
-      clone:function(obj){
-        if(!obj) return;
-        var newObj ={};
-        for(var key in obj){
-          newObj[key] = obj[key];
-        }
-        return newObj;
-      },
-      add:function(e){
-        let ID = e.target.parentNode.id;
-        var  o = this.$store.state.resume[ID][0];
-
-        var newObj = this.clone(o);
-        console.log('newObj',Object.create(o))
-        this.$store.state.resume[ID].push(newObj)
-        this.$store.commit('keep')
+      addResumeSubfield(field){
+        this.$store.commit('addResumeSubfield', {field})
       },
       changeResumeField(path,value){
         this.$store.commit('updateResume',{
@@ -73,12 +63,10 @@
         })
       },
       deleteitem(item,i){
-        if(item.length>1){
           this.$store.commit('deleteItem',{
             item,
             i
           })
-        }
       }
     }
   }
